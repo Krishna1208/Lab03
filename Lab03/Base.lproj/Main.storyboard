@@ -92,7 +92,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="conLabel" destination="8bC-Xf-vdC" id="ZD9-F9-nd7"/>
+                        <outlet property="conLabel" destination="cHh-NE-NYI" id="cZS-Vh-CSG"/>
                         <outlet property="imgWeather" destination="hPK-92-xjp" id="2Sm-FR-VG8"/>
                         <outlet property="locLabel" destination="ncX-i4-X8J" id="MXK-pw-emn"/>
                         <outlet property="searchText" destination="ScR-Kq-esk" id="kFS-HY-tLN"/>
