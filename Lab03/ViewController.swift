@@ -31,8 +31,8 @@ class ViewController: UIViewController,UITextFieldDelegate {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        loadImg()
-               searchText.delegate = self
+               loadImg()
+                searchText.delegate=self
                locationManager.delegate=self
     }
     private func loadImg(){
@@ -40,13 +40,11 @@ class ViewController: UIViewController,UITextFieldDelegate {
             imgWeather.preferredSymbolConfiguration=config
             imgWeather.image=UIImage(systemName: "sun.max.circle")
         }
-    func textFieldReturn(_ textField: UITextField) -> Bool {
-            textField.endEditing(true)
-            print(textField.text ?? "")
-            loadWeather(search: searchText.text)
-            return true
-        }
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print(textField.text ?? " ")
+        loadWeather(search: searchText.text)
+        return true
+    }
     
     private func loadWeather(search : String?){
             guard let search = search else{
@@ -90,27 +88,47 @@ class ViewController: UIViewController,UITextFieldDelegate {
                             if(weatherData.current.condition.code==1003)
                             {
                                 config=UIImage.SymbolConfiguration(paletteColors: [.systemTeal])
-                                self.imgWeather.image=UIImage(systemName:"cloud.fill")
+                                self.imgWeather.image=UIImage(systemName:"cloud.moon.fill")
                             }
-                            if(weatherData.current.condition.code==1003)
+                            if(weatherData.current.condition.code==1006)
                             {
                                 config=UIImage.SymbolConfiguration(paletteColors: [.systemTeal])
-                                self.imgWeather.image=UIImage(systemName:"cloud.fill")
+                                self.imgWeather.image=UIImage(systemName:"cloud")
                             }
-                            if(weatherData.current.condition.code==1183)
+                            if(weatherData.current.condition.code==1030)
                             {
                                 config=UIImage.SymbolConfiguration(paletteColors: [.systemBlue,.systemGray2])
-                                self.imgWeather.image=UIImage(systemName:"cloud.drizzle")
+                                self.imgWeather.image=UIImage(systemName:"cloud.fog")
                             }
                             if(weatherData.current.condition.code==1183)
                             {
                                 config=UIImage.SymbolConfiguration(paletteColors: [.systemCyan,.systemTeal])
-                                self.imgWeather.image=UIImage(systemName:"cloud.heavyrain")
+                                self.imgWeather.image=UIImage(systemName:"cloud.sun.rain")
                             }
                             if(weatherData.current.condition.code==1210)
                             {
                                 config=UIImage.SymbolConfiguration(paletteColors: [.systemPurple])
-                                self.imgWeather.image=UIImage(systemName:"snowflake")
+                                self.imgWeather.image=UIImage(systemName:"cloud.snow.fill")
+                            }
+                            if(weatherData.current.condition.code==1114)
+                            {
+                                config=UIImage.SymbolConfiguration(paletteColors: [.systemTeal])
+                                self.imgWeather.image=UIImage(systemName:"cloud.snow.circle.fill")
+                            }
+                            if(weatherData.current.condition.code==1135)
+                            {
+                                config=UIImage.SymbolConfiguration(paletteColors: [.systemBlue,.systemGray2])
+                                self.imgWeather.image=UIImage(systemName:"cloud.fog.fille")
+                            }
+                            if(weatherData.current.condition.code==1180)
+                            {
+                                config=UIImage.SymbolConfiguration(paletteColors: [.systemCyan,.systemTeal])
+                                self.imgWeather.image=UIImage(systemName:"cloud.sun.bolt")
+                            }
+                            if(weatherData.current.condition.code==1195)
+                            {
+                                config=UIImage.SymbolConfiguration(paletteColors: [.systemPurple])
+                                self.imgWeather.image=UIImage(systemName:"cloud.hail.fill   ")
                             }
                         }
                     }
@@ -178,36 +196,56 @@ class ViewController: UIViewController,UITextFieldDelegate {
                             self.conLabel.text="\(weatherData.current.condition.text)"
                             var config = UIImage.SymbolConfiguration(paletteColors: [.systemCyan,.systemYellow,.systemTeal])
                             self.imgWeather.preferredSymbolConfiguration = config
-                                if(weatherData.current.condition.code==1000)
-                                {
-                                    config=UIImage.SymbolConfiguration(paletteColors: [.systemYellow])
-                                    self.imgWeather.image=UIImage(systemName:"sun.max.fill")
-                                }
-                                if(weatherData.current.condition.code==1003)
-                                {
-                                    config=UIImage.SymbolConfiguration(paletteColors: [.systemTeal])
-                                    self.imgWeather.image=UIImage(systemName:"cloud.fill")
-                                }
-                                if(weatherData.current.condition.code==1003)
-                                {
-                                    config=UIImage.SymbolConfiguration(paletteColors: [.systemTeal])
-                                    self.imgWeather.image=UIImage(systemName:"cloud.fill")
-                                }
-                                if(weatherData.current.condition.code==1183)
-                                {
-                                    config=UIImage.SymbolConfiguration(paletteColors: [.systemBlue,.systemGray2])
-                                    self.imgWeather.image=UIImage(systemName:"cloud.drizzle")
-                                }
-                                if(weatherData.current.condition.code==1183)
-                                {
-                                    config=UIImage.SymbolConfiguration(paletteColors: [.systemCyan,.systemTeal])
-                                    self.imgWeather.image=UIImage(systemName:"cloud.heavyrain")
-                                }
-                                if(weatherData.current.condition.code==1210)
-                                {
-                                    config=UIImage.SymbolConfiguration(paletteColors: [.systemPurple])
-                                    self.imgWeather.image=UIImage(systemName:"snowflake")
-                                }
+                            if(weatherData.current.condition.code==1000)
+                            {
+                                config=UIImage.SymbolConfiguration(paletteColors: [.systemYellow])
+                                self.imgWeather.image=UIImage(systemName:"sun.max.fill")
+                            }
+                            if(weatherData.current.condition.code==1003)
+                            {
+                                config=UIImage.SymbolConfiguration(paletteColors: [.systemTeal])
+                                self.imgWeather.image=UIImage(systemName:"cloud.moon.fill")
+                            }
+                            if(weatherData.current.condition.code==1006)
+                            {
+                                config=UIImage.SymbolConfiguration(paletteColors: [.systemTeal])
+                                self.imgWeather.image=UIImage(systemName:"cloud")
+                            }
+                            if(weatherData.current.condition.code==1030)
+                            {
+                                config=UIImage.SymbolConfiguration(paletteColors: [.systemBlue,.systemGray2])
+                                self.imgWeather.image=UIImage(systemName:"cloud.fog")
+                            }
+                            if(weatherData.current.condition.code==1183)
+                            {
+                                config=UIImage.SymbolConfiguration(paletteColors: [.systemCyan,.systemTeal])
+                                self.imgWeather.image=UIImage(systemName:"cloud.sun.rain")
+                            }
+                            if(weatherData.current.condition.code==1210)
+                            {
+                                config=UIImage.SymbolConfiguration(paletteColors: [.systemPurple])
+                                self.imgWeather.image=UIImage(systemName:"cloud.snow.fill")
+                            }
+                            if(weatherData.current.condition.code==1114)
+                            {
+                                config=UIImage.SymbolConfiguration(paletteColors: [.systemTeal])
+                                self.imgWeather.image=UIImage(systemName:"cloud.snow.circle.fill")
+                            }
+                            if(weatherData.current.condition.code==1135)
+                            {
+                                config=UIImage.SymbolConfiguration(paletteColors: [.systemBlue,.systemGray2])
+                                self.imgWeather.image=UIImage(systemName:"cloud.fog.fille")
+                            }
+                            if(weatherData.current.condition.code==1180)
+                            {
+                                config=UIImage.SymbolConfiguration(paletteColors: [.systemCyan,.systemTeal])
+                                self.imgWeather.image=UIImage(systemName:"cloud.sun.bolt")
+                            }
+                            if(weatherData.current.condition.code==1195)
+                            {
+                                config=UIImage.SymbolConfiguration(paletteColors: [.systemPurple])
+                                self.imgWeather.image=UIImage(systemName:"cloud.hail.fill   ")
+                            }
                             }
                         }
                     }
